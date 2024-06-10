@@ -1,0 +1,115 @@
+<p-table #dt [value]="gifts" [rows]="10" [paginator]="true"
+    [globalFilterFields]="['name','description','price','category']" [(selection)]="selectedGift" [rowHover]="true"
+    dataKey="id" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+    [showCurrentPageReport]="true">
+    <ng-template pTemplate="caption">
+        <div class="flex align-items-center justify-content-between">
+            <h5 class="m-0">Manage Purchasing </h5>
+
+            <div class="flex justify-content-center">
+                <p-dropdown [options]="sortOptions" [placeholder]="placeholder" [autoDisplayFirst]="false"
+                    [(ngModel)]="selectedSort" optionLabel="name" (ngModelChange)="onSortChange()">
+                </p-dropdown>
+            </div>
+
+            <span class="p-input-icon-left">
+
+                <i class="pi pi-search"></i>
+                <input pInputText type="text" [(ngModel)]="searchText" (input)="dt.filterGlobal(searchText, 'contains')"
+                    placeholder="Search..." />
+            </span>
+
+        </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+        <tr>
+            <th pSortableColumn="giftName">Name <p-sortIcon field="giftName"></p-sortIcon></th>
+            <th pSortableColumn="description">Description <p-sortIcon field="description"></p-sortIcon></th>
+            <th pSortableColumn="ticketPrice">Price <p-sortIcon field="ticketPrice"></p-sortIcon></th>
+            <th pSortableColumn="category">Category <p-sortIcon field="category"></p-sortIcon></th>
+            <th></th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-gift>
+        <tr>
+            <!-- <td>
+                <p-tableCheckbox [value]="gift"></p-tableCheckbox>
+            </td> -->
+            <td>{{gift.name}}</td>
+            <td>{{gift.description}}</td>
+            <td>{{gift.ticketPrice | currency:'USD'}}</td>
+            <td>{{gift.category}}</td>
+            <td>
+                <button pButton pRipple icon="pi pi-list" class="p-button-rounded p-button-success mr-2"
+                    (click)="openUsersGiftsPanel(gift)"></button>
+                <button pButton pRipple icon="pi pi-list" class="p-button-rounded p-button-danger mr-2"
+                    (click)="openOrderDetailsGiftsPanel(gift)"></button>
+                <!-- //להכניס שתי רשימות נפתחות... -->
+            </td>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="summary">
+        <div class="flex align-items-center justify-content-between">
+            In total there are {{gifts ? gifts.length : 0 }} gifts.
+        </div>
+    </ng-template>
+</p-table>
+
+
+<p-overlayPanel #op [showCloseIcon]="true" header="Gift Details" [style]="{width: '450px'}">
+    <ng-template pTemplate>
+        <p-table [value]="usersList" selectionMode="single" [(selection)]="selectedUser" [paginator]="true" [rows]="5"
+            responsiveLayout="scroll">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th pSortableColumn="name">Users Purchasing <p-sortIcon field="name"></p-sortIcon></th>
+                    <!-- <th>Image</th> -->
+                    <!-- <th pSortableColumn="price">Price <p-sortIcon field="price"></p-sortIcon></th> -->
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-rowData let-user>
+                <tr [pSelectableRow]="rowData">
+                    <td>{{user.firstName}}</td>
+                    <td>{{user.lastName}}</td>
+                    <td>{{user.address}}</td>
+                    <!-- <td><img src="assets/showcase/images/demo/product/{{product.image}}" [alt]="product.image" class="product-image" /></td> -->
+                    <!-- <td>{{product.price}}</td> -->
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="summary">
+                <div class="flex align-items-center justify-content-between">
+                    In total there are {{usersList ? usersList.length : 0 }} purchasing
+                </div>
+            </ng-template>
+        </p-table>
+    </ng-template>
+</p-overlayPanel>
+
+<p-overlayPanel #op1 [showCloseIcon]="true" header="Gift Details" [style]="{width: '450px'}">
+    <ng-template pTemplate>
+        <p-table [value]="orderDetailsList" selectionMode="single" [(selection)]="selectedOrderDetails"
+            [paginator]="true" [rows]="5" responsiveLayout="scroll">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th pSortableColumn="name">Order Details Purchasing <p-sortIcon field="name"></p-sortIcon></th>
+
+                    <!-- <th pSortableColumn="price">Price <p-sortIcon field="price"></p-sortIcon></th> -->
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-rowData let-orderDetails>
+                <tr [pSelectableRow]="rowData">
+                    <td>id:{{orderDetails.id}}, quentity:{{orderDetails.quentity}}, orderId:{{orderDetails.orderId}}
+                    </td>
+                    <!-- <td><img src="assets/showcase/images/demo/product/{{product.image}}" [alt]="product.image" class="product-image" /></td> -->
+                    <!-- <td>{{product.price}}</td> -->
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="summary">
+                <div class="flex align-items-center justify-content-between">
+                    In total there are {{orderDetailsList ? orderDetailsList.length : 0 }} purchasing
+                </div>
+            </ng-template>
+        </p-table>
+    </ng-template>
+</p-overlayPanel>
+<p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>

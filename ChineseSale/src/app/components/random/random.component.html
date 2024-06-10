@@ -1,0 +1,50 @@
+<div class="card">
+    <p-dataView #dv [value]="updateGifts" [paginator]="true" [rows]="9" filterBy="name" layout="grid">
+        <ng-template pTemplate="header">
+            <div class="flex flex-column md:flex-row md:justify-content-between">
+                <span class="p-input-icon-left mb-2 md:mb-0">
+                    <i class="pi pi-search"></i>
+
+                    <input pInputText type="text" [(ngModel)]="searchText" (input)="dv.filter(searchText, 'contains')"
+                        placeholder="Search..." />
+                </span>
+                <p-dataViewLayoutOptions></p-dataViewLayoutOptions>
+            </div>
+        </ng-template>
+        <ng-template let-gift pTemplate="listItem">
+            <div class="p-col-12">
+                <div class="product-list-item">
+                    <img [src]="'assets/images/' + gift.name+'.jpg'" alt="Image" class="">
+                    <div class="product-list-detail">
+
+                        <div class="product-name">{{gift.name}}</div>
+                        <div class="product-description">{{gift.description}}</div>
+                    </div>
+                    <div class="product-list-action">
+                        <i class="pi pi-gift product-category-icon"></i>
+                        <span class="product-category">{{gift.category}} won a gift! our congratulations!!!</span>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+        <ng-template let-gift pTemplate="gridItem">
+            <div class="col-12 md:col-4">
+                <div class="product-grid-item card">
+
+                    <div class="product-grid-item-top">
+                        <div>
+                            <i class="pi pi-tag product-category-icon"></i>
+                            <span class="product-category">{{gift.category}} won a gift!</span>
+                        </div>
+                    </div>
+                    <div class="product-grid-item-content">
+                        <img [src]="'assets/images/' + gift.name+'.jpg'" alt="Image">
+                        <div class="product-name">{{gift.name}}</div>
+                        <div class="product-description">{{gift.description}}</div>
+                    </div>
+                    <div class="product-grid-item-bottom">
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+    </p-dataView>

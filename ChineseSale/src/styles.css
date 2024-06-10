@@ -1,0 +1,74 @@
+/* You can add global styles to this file, and also import other style files */
+.centerWrapper{
+    display: block;
+    align-items: center;
+    justify-content: center;
+}
+.p-button.p-button-success, .p-buttonset.p-button-success > .p-button, .p-splitbutton.p-button-success > .p-button {
+    background: #EF4444;
+    border: 1px solid #EF4444;
+}
+
+.p-tabmenu .p-tabmenu-nav .p-tabmenuitem.p-highlight .p-menuitem-link {
+    color: #31b3ac;
+}
+
+.p-tabmenu .p-tabmenu-nav .p-tabmenuitem.p-highlight .p-menuitem-link {
+
+    color: #31b3ac;
+}
+
+.p-tabmenu .p-tabmenu-nav .p-tabmenuitem.p-highlight .p-menuitem-link {
+color: #31b3ac;
+}
+
+/* .p-button.p-button-danger, .p-buttonset.p-button-danger > .p-button, .p-splitbutton.p-button-danger > .p-button {
+    background: #EF4444;
+    border: 1px solid #f43f3f;
+} */
+
+.p-button {
+    background: #fa9230;
+    border: 1px solid #fa9230;
+
+}
+
+.text-blue-500 {
+    color: #31b3ac !important;
+}
+
+.p-button.p-button-danger, .p-buttonset.p-button-danger > .p-button, .p-splitbutton.p-button-danger > .p-button {
+    background: #31b3ac;
+    border: 1px solid #31b3ac;
+}
+.card {
+    background: var(--surface-card);
+    padding: 2rem;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+}
+html {
+    font-size: 14px;
+}
+
+body {
+    font-family: var(--font-family);
+    font-weight: normal;
+    background: var(--surface-ground);
+    color: var(--text-color);
+    padding: 1rem;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.p-button.p-button-success.p-button-text, .p-buttonset.p-button-success > .p-button.p-button-text, .p-splitbutton.p-button-success > .p-button.p-button-text {
+    background-color: transparent;
+    color: #22C55E;
+    border-color: transparent;
+}
+.ui-blockui-content {
+    background-color: rgba(255, 255, 255, 0.8) !important;
+  }
+
+
+

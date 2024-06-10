@@ -1,0 +1,11 @@
+.centerWrapper{
+    padding: 10px;
+    display: inline-flex;
+    justify-content: space-between;
+    justify-content: center;
+    width: 60vw;
+    /* height: 80vh; */
+    margin-left: 17lvw;
+    margin-right:auto;
+   
+}

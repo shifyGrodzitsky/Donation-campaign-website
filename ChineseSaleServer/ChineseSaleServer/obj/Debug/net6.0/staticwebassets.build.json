@@ -1,0 +1,58 @@
+{
+  "Version": 1,
+  "Hash": "W6mh1e79rlWDLykO0GbjgcJSe2is+EP/dM8+Nhnlzbk=",
+  "Source": "ChineseSaleServer",
+  "BasePath": "_content/ChineseSaleServer",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "ChineseSaleServer\\wwwroot",
+      "Source": "ChineseSaleServer",
+      "ContentRoot": "E:\\דדדס\\ChineseSaleServer\\ChineseSaleServer\\wwwroot\\",
+      "BasePath": "_content/ChineseSaleServer",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "E:\\דדדס\\ChineseSaleServer\\ChineseSaleServer\\wwwroot\\imag\\371912160_CHRISTMAS_PRESENT_400px.gif",
+      "SourceId": "ChineseSaleServer",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\דדדס\\ChineseSaleServer\\ChineseSaleServer\\wwwroot\\",
+      "BasePath": "_content/ChineseSaleServer",
+      "RelativePath": "imag/371912160_CHRISTMAS_PRESENT_400px.gif",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\imag\\371912160_CHRISTMAS_PRESENT_400px.gif"
+    },
+    {
+      "Identity": "E:\\דדדס\\ChineseSaleServer\\ChineseSaleServer\\wwwroot\\imag\\logo.png",
+      "SourceId": "ChineseSaleServer",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\דדדס\\ChineseSaleServer\\ChineseSaleServer\\wwwroot\\",
+      "BasePath": "_content/ChineseSaleServer",
+      "RelativePath": "imag/logo.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\imag\\logo.png"
+    }
+  ]
+}

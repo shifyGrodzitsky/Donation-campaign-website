@@ -1,0 +1,29 @@
+{
+  "Files": [
+    {
+      "Id": "E:\\דדדס\\ChineseSaleServer\\ChineseSaleServer\\wwwroot\\imag\\371912160_CHRISTMAS_PRESENT_400px.gif",
+      "PackagePath": "staticwebassets\\imag\\371912160_CHRISTMAS_PRESENT_400px.gif"
+    },
+    {
+      "Id": "E:\\דדדס\\ChineseSaleServer\\ChineseSaleServer\\wwwroot\\imag\\logo.png",
+      "PackagePath": "staticwebassets\\imag\\logo.png"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.ChineseSaleServer.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.build.ChineseSaleServer.props",
+      "PackagePath": "build\\ChineseSaleServer.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildMultiTargeting.ChineseSaleServer.props",
+      "PackagePath": "buildMultiTargeting\\ChineseSaleServer.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildTransitive.ChineseSaleServer.props",
+      "PackagePath": "buildTransitive\\ChineseSaleServer.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

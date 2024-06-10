@@ -1,0 +1,10 @@
+/* img{
+    width: auto;
+    height: 80vh;
+} */
+img {
+    display: block;
+    margin: 0 auto;
+    max-width: 60%;
+    height: auto;
+  }

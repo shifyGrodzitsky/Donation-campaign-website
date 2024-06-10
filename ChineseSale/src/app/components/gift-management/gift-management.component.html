@@ -1,0 +1,137 @@
+<p-toolbar styleClass="mb-4">
+    <ng-template pTemplate="left">
+        <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success mr-2"
+            (click)="openNew()"></button>
+
+    </ng-template>
+</p-toolbar>
+
+<p-table #dt [value]="gifts" [rows]="10" [paginator]="true"
+    [globalFilterFields]="['name','description','price','category']" [(selection)]="selectedGift" [rowHover]="true"
+    dataKey="id" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+    [showCurrentPageReport]="true">
+    <ng-template pTemplate="caption">
+        <div class="flex align-items-center justify-content-between">
+            <h5 class="m-0">Manage Gifts</h5>
+            <div class=" flex flex-column md:flex-row gap-3">
+                <span class=" p-inputgroup">
+                    <button type="button" pButton pRipple label="Search" (click)="filterByDonorNameFunc()"
+                        class="p-button-danger"></button>
+                    <input [(ngModel)]="filterByDonorName" type="text" pInputText placeholder="Donor Name">
+                </span>
+
+            </div>
+            <div class=" flex flex-column md:flex-row gap-3">
+                <span class="p-inputgroup">
+                    <button type="button" pButton pRipple label="Search" (click)="filterByNumOfPurchaseFunc()"
+                        class="p-button-danger"></button>
+                    <input [(ngModel)]="filterByNumOfPurchase" type="text" pInputText placeholder="number of purchase">
+                </span>
+            </div>
+            <span class="p-input-icon-left">
+                <i class="pi pi-search"></i>
+                <input pInputText type="text" [(ngModel)]="searchText" (input)="dt.filterGlobal(searchText, 'contains')"
+                    placeholder="Search..." />
+            </span>
+
+        </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+        <tr>
+            <th pSortableColumn="giftName">Name <p-sortIcon field="giftName"></p-sortIcon></th>
+            <th pSortableColumn="description">Description <p-sortIcon field="description"></p-sortIcon></th>
+            <th pSortableColumn="ticketPrice">Price <p-sortIcon field="ticketPrice"></p-sortIcon></th>
+            <th pSortableColumn="category">Category <p-sortIcon field="category"></p-sortIcon></th>
+            <th></th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-gift>
+        <tr>
+            <td>{{gift.name}}</td>
+            <td>{{gift.description}}</td>
+            <td>{{gift.ticketPrice | currency:'USD'}}</td>
+            <td>{{gift.category}}</td>
+            <td>
+                <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2"
+                    (click)="editGift(gift)"></button>
+                <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning"
+                    (click)="deleteGift(gift)"></button>
+            </td>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="summary">
+        <div class="flex align-items-center justify-content-between">
+            In total there are {{gifts ? gifts.length : 0 }} gifts.
+        </div>
+    </ng-template>
+</p-table>
+
+
+<p-dialog [(visible)]="giftDialog" [style]="{width: '450px'}" header="Product Details" [modal]="true"
+    styleClass="p-fluid">
+    <ng-template pTemplate="content">
+        <div class="p-field" [formGroup]="frmGift">
+            <label for="giftName" class="block text-900 font-medium mb-2">Gift Name</label>
+            <input type="text" pInputText id="giftName" [(ngModel)]="gift.name" required autofocus
+                formControlName="giftName" />
+            <small class="p-error" *ngIf="submitted && !gift.name">Name is required.</small>
+            <small class="p-error" *ngIf="isNameGiftExists()&&gift.id===0">Gift Exists</small>
+        </div>
+        <div class="p-field" [formGroup]="frmGift">
+            <label for="description" class="block text-900 font-medium mb-2">Description</label>
+            <textarea id="description" pInputTextarea [(ngModel)]="gift.description" required rows="3" cols="20"
+                formControlName="description"></textarea>
+                <small class="p-error" *ngIf="submitted && !gift.description">Description id is required.</small>
+
+        </div>
+        <div class="p-field" formControlName="category">
+            <label class="mb-3" class="block text-900 font-medium mb-2">Category</label>
+            <div class="p-formgrid p-grid">
+                <div class="p-field-radiobutton p-col-6">
+                    <p-radioButton id="category1" name="category" value="Accessories"
+                        [(ngModel)]="gift.category"></p-radioButton>
+                    <label for="category1">Accessories</label>
+                </div>
+                <div class="p-field-radiobutton p-col-6">
+                    <p-radioButton id="category2" name="category" value="Clothing"
+                        [(ngModel)]="gift.category"></p-radioButton>
+                    <label for="category2">Toyes</label>
+                </div>
+                <div class="p-field-radiobutton p-col-6">
+                    <p-radioButton id="category3" name="category" value="Electronics"
+                        [(ngModel)]="gift.category"></p-radioButton>
+                    <label for="category3">Electronics</label>
+                </div>
+                <div class="p-field-radiobutton p-col-6">
+                    <p-radioButton id="category4" name="category" value="Fitness"
+                        [(ngModel)]="gift.category"></p-radioButton>
+                    <label for="category4">Differents</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="p-formgrid p-grid" [formGroup]="frmGift">
+            <div class="p-field p-col">
+                <label for="price" class="block text-900 font-medium mb-2">Price</label>
+                <p-inputNumber id="price" [(ngModel)]="gift.ticketPrice" mode="currency" currency="USD" locale="en-US"
+                    formControlName="ticketPrice"></p-inputNumber>
+                    <small class="p-error" *ngIf="submitted && !gift.ticketPrice">TickrtPrice id is required.</small>
+
+            </div>
+            <div class="p-field" [formGroup]="frmGift">
+                <label for="donorId" class="block text-900 font-medium mb-2">Donor Id</label>
+                <input type="number" pInputText id="donorId" [(ngModel)]="gift.donorId" required autofocus
+                    formControlName="donorId" />
+                <small class="p-error" *ngIf="submitted && !gift.donorId">Donor id is required.</small>
+            </div>
+        </div>
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
+        <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="saveGift()"></button>
+    </ng-template>
+</p-dialog>
+
+
+<p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>

@@ -1,0 +1,40 @@
+.centerWrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.centered-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+  }
+  
+  .centered-form form {
+    width: 300px;
+    margin: 0 auto;
+  }
+  
+  .centered-form input[type="text"],
+  .centered-form input[type="email"],
+  .centered-form input[type="password"] {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 5px;
+  }
+  
+  .centered-form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .centered-form button:hover {
+    background-color: #45a049;
+  }
+
+

@@ -1,0 +1,47 @@
+<div class="centerWrapper">
+  <div class="surface-card p-4 shadow-2 border-round w-full lg:w-6">
+    <div class="text-center mb-5">
+      <img src="assets/images/gifts.gif" alt="Image" height="50" class="mb-3">
+      <div class="text-900 text-3xl font-medium mb-3">Welcome</div>
+      <span class="text-600 font-medium line-height-3">We are glad you decided to join us!</span>
+    </div>
+    <div [formGroup]="frmUser">
+      <label for="firstName" class="block text-900 font-medium mb-2">First Name</label>
+      <input id="firstName" [(ngModel)]="user.firstName" type="text" placeholder="First Name" pInputText
+        class="w-full mb-3" required autofocus formControlName="firstName" />
+      <small class="p-error" *ngIf="submitted && !user.firstName">First Name is required.</small>
+
+      <label for="lastName" class="block text-900 font-medium mb-2">Last Name</label>
+      <input id="lastName" [(ngModel)]="user.lastName" type="text" placeholder="Last Name" pInputText
+        class="w-full mb-3" required autofocus formControlName="lastName" />
+      <small class="p-error" *ngIf="submitted && !user.lastName">Last Name is required.</small>
+
+      <label for="phone" class="block text-900 font-medium mb-2">Phone</label>
+      <input id="phone" [(ngModel)]="user.phone" type="text" placeholder="Phone" pInputText class="w-full mb-3" required
+        autofocus formControlName="phone" />
+      <small class="p-error" *ngIf="submitted && !user.phone">Phone is required.</small>
+
+      <label for="address" class="block text-900 font-medium mb-2">Address</label>
+      <input id="address" [(ngModel)]="user.address" type="text" placeholder="Address" pInputText class="w-full mb-3"
+        required autofocus formControlName="address" />
+      <small class="p-error" *ngIf="submitted && !user.address">AddressFirst Name is required.</small>
+
+      <label for="email1" class="block text-900 font-medium mb-2">Email</label>
+      <input id="email1" [(ngModel)]="user.email" type="email" placeholder="Email address" pInputText
+        class="w-full mb-3" required autofocus formControlName="email" />
+      <small class="p-error" *ngIf="submitted && !user.email">Email is required.</small>
+
+      <label for="password1" class="block text-900 font-medium mb-2">Password</label>
+      <p-password [toggleMask]="true" id="password1" [(ngModel)]="user.password" placeholder="Password"
+        class="w-full mb-3" required autofocus formControlName="password"></p-password>
+
+      <small class="p-error" *ngIf="submitted && !user.password">Password is required.</small>
+
+      <div class="flex align-items-center justify-content-between mb-6">
+        <div class="flex align-items-center">
+        </div>
+      </div>
+      <button pButton pRipple label="Register" (click)="createUser()" icon="pi pi-user" class="w-full"></button>
+    </div>
+  </div>
+</div>

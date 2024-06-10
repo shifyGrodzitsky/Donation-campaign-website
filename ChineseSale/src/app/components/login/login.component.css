@@ -1,0 +1,9 @@
+.centerWrapper{
+    padding: 40px;
+    display: inline-flex;
+    /* align-items: center; */
+    justify-content: center;
+    width: 60vw;
+    margin-left: 17lvw;
+    margin-right:auto;
+}

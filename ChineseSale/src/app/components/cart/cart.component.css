@@ -1,0 +1,46 @@
+.cartSide{
+  height: 50vh;
+  width: 100vw;
+}
+
+:host ::ng-deep {
+  .product-item {
+      .product-item-content {
+          border: 1px solid var(--surface-d);
+          border-radius: 3px;
+          margin: .3rem;
+          text-align: center;
+          padding: 2rem 0;
+      }
+  
+      .product-image {
+          width: 50%;
+          height: 60px;
+          box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23)
+      }
+  }
+}
+.centerWrapper{
+  padding: 80px;
+  display: grid;
+  /* align-items: center; */
+  justify-content: center;
+  width: 60vw;
+  margin-left: 20%;
+  margin-right:auto;
+}
+
+.p-button{
+  background: #31b3ac;
+  border: 1px solid #31b3ac;
+}
+.p-button.p-button-danger, .p-buttonset.p-button-danger > .p-button, .p-splitbutton.p-button-danger > .p-button {
+  background: #31b3ac;
+  border: 1px solid #31b3ac;
+}
+
+.p-button:enabled:hover {
+  background: #31b3ac;
+  color: #ffffff;
+  border-color: #31b3ac;
+}

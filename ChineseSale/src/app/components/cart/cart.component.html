@@ -1,0 +1,82 @@
+
+
+<div class="card">
+
+    <p-carousel [value]="draftGifts" [numVisible]="4" [numScroll]="7" [circular]="false"
+        [responsiveOptions]="responsiveOptions">
+        <ng-template let-gift let-i="index" pTemplate="item">
+            <div class="border-1 surface-border border-round m-1 text-center py-3 px-2">
+                <button pButton pRipple icon="pi pi-trash " class="p-button-success  p-button-text"
+                (click)="deleteDraftFromTheCart(gift.id)"></button>
+                <div class="mb-3">
+                    <img [src]="'assets/images/' + gift.name+'.jpg'" [alt]="gift.name" class="w-2 shadow-2" height="80px" />
+                </div>
+                <div>
+                    <h4 class="mb-1">{{ gift.name }}</h4>
+                    <h6>{{ '$' + gift.ticketPrice }}</h6>
+                    <div class="mt-5 flex align-items-center justify-content-center gap-2">
+                        <p-button class="plus" icon="pi pi-plus" [rounded]="true" (onClick)="addQuantity1(gift.id)"/>
+                        <h3>{{gift.numOfPurchases}}</h3>
+                        <p-button icon="pi pi-minus" [rounded]="true" severity="secondary"  (click)="decreaseQuantity1(gift.id)"/>
+           
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+    </p-carousel>
+</div>
+<p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000"
+    rejectButtonStyleClass="p-button-text"></p-confirmDialog>
+
+<div class="centerWrapper">
+    <div>
+        <h1>{{"Total:"+cart.total+"$"}}</h1>
+    </div>
+    <p-button (click)="openNew()" icon="pi pi-check" label="Confirm Order" class="p-button-lg" 
+        styleClass="mr-2"></p-button>
+</div>
+<p-toast></p-toast>
+<p-blockUI [blocked]="blocked" >
+    <div class="text-center" style=" color: black;  font-size: 20px;">
+        <img [src]="'assets/images/giphy.gif'" style="height: auto; width: auto;"/>
+    </div>
+</p-blockUI>
+
+<p-dialog [(visible)]="creditCardDialog" [style]="{width: '450px'}" header="Credit Card Information" [modal]="true"
+    styleClass="p-fluid">
+    <div >
+        <form [formGroup]="creditCardForm" (ngSubmit)="confirm1()">
+          <div class="p-field">
+            <label for="cardNumber">Card Number</label>
+            <p-inputMask mask="999-999-999-9999999"  id="cardNumber" type="text" formControlName="cardNumber" placeholder="Enter card number"></p-inputMask>
+            <small class="p-error" *ngIf="creditCardForm.get('cardNumber')?.invalid && creditCardForm.get('cardNumber')?.touched">
+              Card number is required
+            </small>
+          </div>
+          <div class="p-field">
+            <label for="cardHolder">Card Holder</label>
+            <input id="cardHolder" type="text" pInputText formControlName="cardHolder" placeholder="Enter card holder name">
+            <small class="p-error" *ngIf="creditCardForm.get('cardHolder')?.invalid && creditCardForm.get('cardHolder')?.touched">
+              Card holder name is required
+            </small>
+          </div>
+          <div class="p-field">
+            <label for="expirationDate">Expiration Date</label>
+            <p-calendar id="expirationDate" formControlName="expirationDate" [showIcon]="true" placeholder="Select expiration date"></p-calendar>
+            <small class="p-error" *ngIf="creditCardForm.get('expirationDate')?.invalid && creditCardForm.get('expirationDate')?.touched">
+              Expiration date is required
+            </small>
+          </div>
+          <div class="p-field">
+            <label for="cvv">CVV</label>
+            <input id="cvv" type="password" pInputText formControlName="cvv" placeholder="Enter CVV">
+            <small class="p-error" *ngIf="creditCardForm.get('cvv')?.invalid && creditCardForm.get('cvv')?.touched">
+              CVV is required and must be 3 or 4 digits long
+            </small>
+          </div>
+          <button type="button" pButton label="Confirm Payment" (click)="confirm1()" class="p-button-raised p-button-primary"></button>
+        </form>
+      </div>
+</p-dialog>
+
+
